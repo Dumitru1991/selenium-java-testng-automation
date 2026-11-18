@@ -1,0 +1,6 @@
+ro\automation\pages\ABTestingPage.class
+ro\automation\pages\AccessibilityIssuesPage.class
+ro\automation\base\BasePage.class
+ro\automation\tests\ABTestingTest.class
+ro\automation\base\BaseTest.class
+ro\automation\tests\AccessibilityIssuesTest.class
