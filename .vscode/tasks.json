@@ -1,0 +1,50 @@
+{
+    // One-click Cucumber runs: Terminal > Run Task... or Ctrl+Shift+B (default task)
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Cucumber: run current feature",
+            "type": "shell",
+            "command": "mvn test -Dtest=CucumberTestRunner \"-Dcucumber.features=${relativeFile}\"",
+            "group": { "kind": "build", "isDefault": true },
+            "problemMatcher": []
+        },
+        {
+            "label": "Cucumber: run scenario at cursor",
+            "detail": "Place the cursor on the 'Scenario:' line (or on an Examples row)",
+            "type": "shell",
+            "command": "mvn test -Dtest=CucumberTestRunner \"-Dcucumber.features=${relativeFile}:${lineNumber}\"",
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Cucumber: run by tag",
+            "type": "shell",
+            "command": "mvn test -Dtest=CucumberTestRunner \"-Dcucumber.filter.tags=${input:cucumberTag}\"",
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Cucumber: run all features",
+            "type": "shell",
+            "command": "mvn test -Dtest=CucumberTestRunner",
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Run full suite (testng.xml)",
+            "type": "shell",
+            "command": "mvn test",
+            "group": "test",
+            "problemMatcher": []
+        }
+    ],
+    "inputs": [
+        {
+            "id": "cucumberTag",
+            "type": "promptString",
+            "description": "Cucumber tag expression (e.g. @smoke, @addremove, not @wip)",
+            "default": "@smoke"
+        }
+    ]
+}

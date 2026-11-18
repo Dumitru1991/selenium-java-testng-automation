@@ -7,30 +7,22 @@ import ro.automation.base.BasePage;
 
 public class AccessibilityIssuesPage extends BasePage {
 
-    private final By accessibilityIssuesLink = By.linkText("Accessibility Issues");
-    private final By heading = By.tagName("h3");
-    private final By randImageAlt = By.xpath("//tr[@data-rule='image-alt']");
-    private final By randuriTabel = By.cssSelector("tr[data-rule]");
+    private final By ruleRows = By.cssSelector("tr[data-rule]");
 
     public AccessibilityIssuesPage(WebDriver driver) {
         super(driver);
     }
 
-    public void clickAccessibilityIssues() {
-        click(accessibilityIssuesLink);
+    public void open() {
+        openPage("accessibility_issues");
     }
 
-    public String getTitleAccessibilityIssues() {
-        return text(heading);
+    public boolean isRuleRowVisible(String rule) {
+        return isVisible(By.cssSelector("tr[data-rule='" + rule + "']"));
     }
 
-    public boolean isRowVisible() {
-        return isVisible(randImageAlt);
+    public int getRuleRowsCount() {
+        // findAll() from BasePage waits until the rows are present, then counts them
+        return findAll(ruleRows).size();
     }
-
-    public int getRowsCountAccessibilityIssues() {
-        // Folosește gasesteToate() din BasePage pentru a aștepta și număra rândurile
-        return findAll(randuriTabel).size();
-    }
-    
 }
