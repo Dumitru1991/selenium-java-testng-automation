@@ -2,8 +2,8 @@
 <suite name="Automation Suite">
     <test name="Regression Tests">
         <classes>
-            <class name="ro.automation.tests.ABTestingTest"/>
-            <class name="ro.automation.tests.AccessibilityIssuesTest"/>
+            <!-- Runs every scenario from src/test/resources/features -->
+            <class name="ro.automation.runners.CucumberTestRunner"/>
         </classes>
     </test>
 </suite>
